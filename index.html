@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios de Cálculo</title>
+
+    <style>
+        body {
+            background: #FFB6C1;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        section {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+            margin: 15px auto;
+            padding: 20px;
+            max-width: 450px;
+        }
+
+        section h2 {
+            color: #34495e;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin: 6px 0;
+        }
+
+        button {
+            background: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        p {
+            color: #2d3436;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>SEMANA 04</h1>
+        <p>INTEGRANTES:</p>
+        <p>Esperanza Anais Castillo Palacios</p>
+        <p>Treysi Coronado Pulache</p>
+    </header>
+
+    <!-- 1) Área de un Rectángulo -->
+    <section>
+        <h2>1. Área de un Rectángulo</h2>
+        <input id="recBase" type="number" placeholder="Base (m)">
+        <input id="recAltura" type="number" placeholder="Altura (m)">
+        <button onclick="areaRectangulo()">Calcular</button>
+        <p id="resRect"></p>
+    </section>
+
+    <!-- 2) Área de un Círculo -->
+    <section>
+        <h2>2. Área de un Círculo</h2>
+        <input id="radio" type="number" placeholder="Radio (m)">
+        <button onclick="areaCirculo()">Calcular</button>
+        <p id="resCir"></p>
+    </section>
+
+    <!-- 3) Velocidad -->
+    <section>
+        <h2>3. Velocidad (v=e/t)</h2>
+        <input id="dist" type="number" placeholder="Distancia (m)">
+        <input id="tiempo" type="number" placeholder="Tiempo (s)">
+        <button onclick="calcVelocidad()">Calcular</button>
+        <p id="resVel"></p>
+    </section>
+
+    <!-- 4) Altura de Edificio -->
+    <section>
+        <h2>4. Altura de Edificio (N pisos)</h2>
+        <input id="pisos" type="number" placeholder="Número de pisos">
+        <input id="k" type="number" placeholder="Altura por piso (m)">
+        <button onclick="alturaEdificio()">Calcular</button>
+        <p id="resEdif"></p>
+    </section>
+
+    <!-- 5) Altura de Abismo -->
+    <section>
+        <h2>5. Altura de Abismo</h2>
+        <input id="tSec" type="number" placeholder="Tiempo de caída (s)">
+        <button onclick="alturaAbismo()">Calcular</button>
+        <p id="resAbismo"></p>
+    </section>
+
+    <!-- 6) Raíces de Ax²+Bx+C -->
+    <section>
+        <h2>6. Raíces de Ecuación Cuadrática</h2>
+        <input id="a" type="number" placeholder="A">
+        <input id="b2" type="number" placeholder="B">
+        <input id="c" type="number" placeholder="C">
+        <button onclick="calcRaices()">Calcular</button>
+        <p id="resEq"></p>
+    </section>
+
+    <!-- 7) Reparto de Terreno -->
+    <section>
+        <h2>7. Reparto de Terreno</h2>
+        <input id="areaTerr" type="number" placeholder="Área total (m²)">
+        <button onclick="repartir()">Calcular</button>
+        <p id="resRepar"></p>
+    </section>
+
+    <!-- 8) IGV -->
+    <section>
+        <h2>8. Calcular IGV (18%)</h2>
+        <input id="subTotal" type="number" placeholder="Precio sin IGV">
+        <button onclick="calcIGV()">Calcular</button>
+        <p id="resIGV"></p>
+    </section>
+
+    <!-- 9) Ganancia -->
+    <section>
+        <h2>9. Ganancia de Producto</h2>
+        <input id="costo" type="number" placeholder="Precio de costo">
+        <input id="venta" type="number" placeholder="Precio de venta">
+        <button onclick="calcGanancia()">Calcular</button>
+        <p id="resGan"></p>
+    </section>
+     <!-- 10) Sumar Raíces -->
+    <section>
+        <h2>10. Suma de raíces (Ax²+Bx+C=0)</h2>
+        <input id="a10" type="number" placeholder="Valor de A">
+        <input id="b10" type="number" placeholder="Valor de B">
+        <input id="c10" type="number" placeholder="Valor de C">
+        <button onclick="sumarRaices()">Calcular Suma</button>
+        <p id="resSumRaices"></p>
+    </section>
+
+    <!-- 11) Perímetro de un triángulo -->
+    <section>
+        <h2>11. Perímetro de un triángulo</h2>
+        <input id="lado1" type="number" placeholder="Lado 1">
+        <input id="lado2" type="number" placeholder="Lado 2">
+        <input id="lado3" type="number" placeholder="Lado 3">
+        <button onclick="perimetroTriangulo()">Calcular Perímetro</button>
+        <p id="resPerTri"></p>
+    </section>
+
+    <script>
+        function areaRectangulo() {
+            let b = parseFloat(document.getElementById("recBase").value);
+            let h = parseFloat(document.getElementById("recAltura").value);
+            document.getElementById("resRect").innerText = "Área: " + (b * h).toFixed(2) + " m²";
+        }
+
+        function areaCirculo() {
+            let r = parseFloat(document.getElementById("radio").value);
+            document.getElementById("resCir").innerText = "Área: " + (Math.PI * r * r).toFixed(2) + " m²";
+        }
+
+        function calcVelocidad() {
+            let e = parseFloat(document.getElementById("dist").value);
+            let t = parseFloat(document.getElementById("tiempo").value);
+            document.getElementById("resVel").innerText = "Velocidad: " + (e / t).toFixed(2) + " m/s";
+        }
+
+        function alturaEdificio() {
+            let N = parseInt(document.getElementById("pisos").value);
+            let K = parseFloat(document.getElementById("k").value);
+            document.getElementById("resEdif").innerText = "Altura total: " + (N * K).toFixed(2) + " m";
+        }
+
+        const g = 9.8;
+        function alturaAbismo() {
+            let t = parseFloat(document.getElementById("tSec").value);
+            document.getElementById("resAbismo").innerText = "Altura: " + (0.5 * g * t * t).toFixed(2) + " m";
+        }
+
+        function calcRaices() {
+            let A = parseFloat(document.getElementById("a").value);
+            let B = parseFloat(document.getElementById("b2").value);
+            let C = parseFloat(document.getElementById("c").value);
+            let dis = B*B - 4*A*C;
+            if (dis < 0) {
+                document.getElementById("resEq").innerText = "No hay raíces reales";
+            } else {
+                let r1 = (-B + Math.sqrt(dis)) / (2*A);
+                let r2 = (-B - Math.sqrt(dis)) / (2*A);
+                document.getElementById("resEq").innerText = `R1 = ${r1.toFixed(2)}, R2 = ${r2.toFixed(2)}`;
+            }
+        }
+
+        function repartir() {
+            let T = parseFloat(document.getElementById("areaTerr").value);
+            let mayor = (3/5) * T;
+            let menor = (1/4) * T;
+            let sobrante = T - (mayor + menor);
+            let h1 = sobrante / 2;
+            let h2 = sobrante / 2;
+            document.getElementById("resRepar").innerText =
+                `Mayor: ${mayor.toFixed(2)} m² | Menor: ${menor.toFixed(2)} m² | H1: ${h1.toFixed(2)} m² | H2: ${h2.toFixed(2)} m²`;
+        }
+
+        function calcIGV() {
+            let s = parseFloat(document.getElementById("subTotal").value);
+            document.getElementById("resIGV").innerText = "IGV: " + (s * 0.18).toFixed(2);
+        }
+
+        function calcGanancia() {
+            let c = parseFloat(document.getElementById("costo").value);
+            let v = parseFloat(document.getElementById("venta").value);
+            document.getElementById("resGan").innerText = "Ganancia: " + (v - c).toFixed(2);
+        }
+         function sumarRaices() {
+        let A = parseFloat(document.getElementById("a10").value);
+        let B = parseFloat(document.getElementById("b10").value);
+        let C = parseFloat(document.getElementById("c10").value);
+
+        if (A === 0) {
+            document.getElementById("resSumRaices").innerText = "A no puede ser 0.";
+            return;
+        }
+
+        let discriminante = B*B - 4*A*C;
+        if (discriminante < 0) {
+            document.getElementById("resSumRaices").innerText = "No hay raíces reales.";
+        } else {
+            // Suma de raíces por la fórmula: -B/A
+            let suma = -B / A;
+            document.getElementById("resSumRaices").innerText = "Suma de raíces: " + suma.toFixed(2);
+        }
+    }
+
+    function perimetroTriangulo() {
+        let a = parseFloat(document.getElementById("lado1").value);
+        let b = parseFloat(document.getElementById("lado2").value);
+        let c = parseFloat(document.getElementById("lado3").value);
+
+        let perimetro = a + b + c;
+        document.getElementById("resPerTri").innerText = "Perímetro: " + perimetro.toFixed(2);
+    }
+    </script>
+</body>
+</html>
